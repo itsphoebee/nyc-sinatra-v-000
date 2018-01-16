@@ -14,6 +14,11 @@ class FiguresController < ApplicationController
     erb :'figures/show'
   end
 
+  get '/figures/:slug' do
+    @figure= Figure.find_by_slug(params[:slug])
+    erb :'figures/show'
+  end
+
   post '/figures' do
     @figure = Figure.create(params[:figure])
     #binding.pry
@@ -29,6 +34,11 @@ class FiguresController < ApplicationController
 
   get '/figures/:id/edit' do
     @figure = Figure.find(params[:id])
+    erb :'figures/edit'
+  end
+
+  get '/figures/:slug/edit' do
+    @figure= Figure.find_by_slug(params[:slug])
     erb :'figures/edit'
   end
 
