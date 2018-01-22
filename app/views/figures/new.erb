@@ -1,36 +1,24 @@
-<h1> Create a Figure</h1>
+<h3>Create a New Activity</h3>
 
-<form method="post" action="/figures">
-  <label> Figure Name: </label>
-  <input type="text" name="figure[name]" id="figure_name"></input>
+<form action="/activities/new" method="post">
+  <label>Name:</label>
+  <input type="text" name="name" id="name"></input>
   <br></br>
 
-  <label> Choose a title for the figure </label>
+  <label>Address:</label>
+  <input type="text" name="address" id="address"></input>
   <br></br>
-  <%Title.all.each do |t|%>
-    <input id="title_<%=t.id%>" type="checkbox" name="figure[title_ids][]" value="<%=t.id%>"><%=t.name%></input>
+
+  <label>Description:</label>
+  <input type="text" name="description" id="description"></input>
+  <br></br>
+
+  <label>Category Type:</label>
+  <%@categories.each do |c|%>
+    <input type="radio" name="category_id" value="<%=c.id%>" id="category_id"><%=c.name%></input>
   <%end%>
   <br></br>
 
-  <label> or create a new title: </label>
-  <input type="text" name="title[name]" id="new_title"></input>
-  <br></br>
-
-  <label> Choose an existing landmark to associate</label>
-  <br></br>
-  <%Landmark.all.each do |l|%>
-    <input id="landmark_<%=l.id%>" type="checkbox" name="figure[landmark_ids][]" value="<%=l.id%>"><%=l.name%></input>
-  <%end%>
-  <br></br>
-
-  <label> or create a new landmark </label>
-  <br></br>
-  <label> Landmark Name: </label>
-  <input type="text" name="landmark[name]" id="new_landmark"></input>
-  <br></br>
-  <label> Year Completed: </label>
-  <input type="text" name="landmark[year_completed]" id="landmark_year_completed"></input>
-  <br></br>
-
-  <input type="submit" value="Create New Figure"></input>
+  <input type="submit" value="Submit">
 </form>
+
